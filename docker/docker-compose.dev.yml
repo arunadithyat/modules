@@ -1,0 +1,23 @@
+# Dev services for a local bench. Frappe/ERPNext itself runs natively via `bench start`.
+services:
+  mariadb:
+    image: mariadb:10.6
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+      - --skip-character-set-client-handshake
+    environment:
+      MARIADB_ROOT_PASSWORD: ${MARIADB_ROOT_PASSWORD:-change-me-root}
+    ports: ["3306:3306"]
+    volumes: [mariadb-data:/var/lib/mysql]
+
+  redis-cache:
+    image: redis:7-alpine
+    ports: ["13000:6379"]
+
+  redis-queue:
+    image: redis:7-alpine
+    ports: ["11000:6379"]
+
+volumes:
+  mariadb-data:

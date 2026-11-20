@@ -1,0 +1,1 @@
+This app extends ERPNext (GPLv3). Confirm licensing of this app with a lawyer before distributing it.
